@@ -9,6 +9,11 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
+    public Movie(Integer id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public Integer getId() {
         return id;
     }

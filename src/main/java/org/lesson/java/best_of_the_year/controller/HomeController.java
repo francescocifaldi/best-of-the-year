@@ -22,21 +22,15 @@ public class HomeController {
 
     @GetMapping("/movies")
     public String getBestMovies(Model model) {
-        String list = "";
-        for (Movie movie : getBestMovies()) {
-            list = list + movie.getTitle() + ", ";
-        }
-        model.addAttribute("movies", list);
+        List<Movie> movies = getBestMovies();
+        model.addAttribute("movies", movies);
         return "movies";
     }
 
     @GetMapping("/songs")
     public String getBestSongs(Model model) {
-        String list = "";
-        for (Song song : getBestSongs()) {
-            list = list + song.getTitle() + ", ";
-        }
-        model.addAttribute("songs", list);
+        List<Song> songs = getBestSongs();
+        model.addAttribute("songs", songs);
         return "songs";
     }
 

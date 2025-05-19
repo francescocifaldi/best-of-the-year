@@ -8,6 +8,7 @@ import org.lesson.java.best_of_the_year.model.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -54,5 +55,19 @@ public class HomeController {
         songs.add(new Song(2, "Supersonic"));
         songs.add(new Song(3, "Champagne Supernova"));
         return songs;
+    }
+
+    @GetMapping("/movies/{id}")
+    public String getMovieById(Model model, @PathVariable Integer id) {
+        Movie movie = getBestMovies().get(id);
+        model.addAttribute("product", movie);
+        return "show";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String getSongById(Model model, @PathVariable Integer id) {
+        Song song = getBestSongs().get(id);
+        model.addAttribute("product", song);
+        return "show";
     }
 }

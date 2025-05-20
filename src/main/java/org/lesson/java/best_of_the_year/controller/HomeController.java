@@ -53,15 +53,21 @@ public class HomeController {
 
     @GetMapping("/movies/{id}")
     public String getMovieById(Model model, @PathVariable Integer id) {
-        Movie movie = getBestMovies().get(id);
-        model.addAttribute("product", movie);
+        for (Movie movie : getBestMovies()) {
+            if (movie.getId() == id) {
+                model.addAttribute("product", movie);
+            }
+        }
         return "show";
     }
 
     @GetMapping("/songs/{id}")
     public String getSongById(Model model, @PathVariable Integer id) {
-        Song song = getBestSongs().get(id);
-        model.addAttribute("product", song);
+        for (Song song : getBestSongs()) {
+            if (song.getId() == id) {
+                model.addAttribute("product", song);
+            }
+        }
         return "show";
     }
 }

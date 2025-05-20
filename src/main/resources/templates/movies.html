@@ -11,19 +11,8 @@
 <body>
     <div class="container">
         <table class="table">
-            <thead>
-                <tr>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>Best of</div>
 
-                        <div class="d-flex justify-content-center align-items-center">
-                            <a th:href="@{/songs}" class="btn btn-primary">Songs</a>
-                            <a th:href="@{/movies}" class="btn btn-primary">Movies</a>
-                        </div>
-                        </th>
-                    </div>
-                </tr>
-            </thead>
+            <th:block th:replace="fragments :: table-header"></th:block>
 
             <tbody class="text-center">
                 <tr>
@@ -31,7 +20,8 @@
                 </tr>
                 <tr th:each="movie : ${movies}">
                     <td class="border-1">
-                        [[${movie.title}]]
+                        <a th:href="@{/movies/{id}(id=${movie.id})}"
+                            class="text-decoration-none text-reset">[[${movie.title}]]</a>
                     </td>
                 </tr>
             </tbody>
